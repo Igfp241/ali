@@ -1,11 +1,12 @@
 import streamlit as st
+import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
-# Cette ligne fait le pont avec les secrets que vous venez de remplir
+# Connexion à Google Sheets via les Secrets
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-# Cette ligne permet de lire votre fichier Google Sheets
-df = conn.read()
+# Lecture des données (ceci remplira votre tableau Inspecteur)
+df = conn.read() 
 
 # --- CONFIGURATION DE LA PAGE & DESIGN  ---
 st.set_page_config(page_title="IGFP - SUIVI PEDAGOGIQUE", page_icon="🎓", layout="wide")
@@ -217,4 +218,5 @@ if check_password():
             with st.chat_message("assistant"):
                 reponse = "Message transmis."
                 st.markdown(reponse)
+
             st.session_state.messages.append({"role": "assistant", "content": reponse})
