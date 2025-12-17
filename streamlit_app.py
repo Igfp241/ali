@@ -7,7 +7,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 # Lecture des données (ceci remplira votre tableau Inspecteur)
 df = conn.read() 
-
+st.dataframe(df)
 # --- CONFIGURATION DE LA PAGE & DESIGN  ---
 st.set_page_config(page_title="IGFP - SUIVI PEDAGOGIQUE", page_icon="🎓", layout="wide")
 
@@ -220,3 +220,4 @@ if check_password():
                 st.markdown(reponse)
 
             st.session_state.messages.append({"role": "assistant", "content": reponse})
+
